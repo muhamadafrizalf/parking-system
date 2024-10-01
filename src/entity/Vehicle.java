@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Vehicle {
     private LicensePlate licensePlate;
-    private String type;
     private String color;
+    private String type;
 
-    public Vehicle(LicensePlate licensePlate, String type, String color) {
+    public Vehicle(LicensePlate licensePlate, String color, String type) {
         this.licensePlate = licensePlate;
         this.type = type;
         this.color = color;

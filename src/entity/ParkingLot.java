@@ -9,13 +9,15 @@ public class ParkingLot {
     private LocalDateTime arrivalTime;
     private LocalDateTime departureTime;
     private double price;
+    private boolean isActive;
 
-    public ParkingLot(int slot, Vehicle vehicle, LocalDateTime arrivalTime, LocalDateTime departureTime, double price) {
+    public ParkingLot(int slot, Vehicle vehicle, LocalDateTime arrivalTime, LocalDateTime departureTime, double price, boolean isActive) {
         this.slot = slot;
         this.vehicle = vehicle;
         this.arrivalTime = arrivalTime;
         this.departureTime = departureTime;
         this.price = price;
+        this.isActive = isActive;
     }
 
     public ParkingLot() {
@@ -61,27 +63,24 @@ public class ParkingLot {
         this.price = price;
     }
 
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean active) {
+        isActive = active;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParkingLot that = (ParkingLot) o;
-        return slot == that.slot && Double.compare(price, that.price) == 0 && Objects.equals(vehicle, that.vehicle) && Objects.equals(arrivalTime, that.arrivalTime) && Objects.equals(departureTime, that.departureTime);
+        return slot == that.slot && Objects.equals(vehicle, that.vehicle) && Objects.equals(arrivalTime, that.arrivalTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(slot, vehicle, arrivalTime, departureTime, price);
-    }
-
-    @Override
-    public String toString() {
-        return "ParkingLot{" +
-                "slot=" + slot +
-                ", vehicle=" + vehicle +
-                ", arrivalTime=" + arrivalTime +
-                ", departureTime=" + departureTime +
-                ", price=" + price +
-                '}';
+        return Objects.hash(slot, vehicle, arrivalTime);
     }
 }
